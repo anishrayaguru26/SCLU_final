@@ -1,0 +1,152 @@
+# SCLU Trading System Configuration
+# Default configuration for the SCLU short covering/long unwinding strategy
+
+# Trading Strategy Parameters (Based on Strategy Document)
+trading:
+  # Core SCLU Strategy Parameters
+  oi_ma_period: 50                     # 50-period OI Moving Average (as per document)
+  entry_threshold_pct: 0.005           # 0.5% of OI MA for second derivative entry
+  exit_doi_threshold_pct: 0.001        # 0.1% of OI MA for first derivative exit  
+  exit_d2oi_threshold_pct: 0.005       # 0.5% of OI MA for second derivative exit
+  
+  # Market Timing
+  min_dte: 1                           # Minimum Days to Expiry (not 0 DTE)
+  max_dte: 4                           # Maximum Days to Expiry (3-4 DTE optimal)
+  preferred_dte: 2                     # Preferred DTE for best performance
+  
+  # Strike Selection
+  max_strikes_per_side: 3              # ATM +1/+2/+3 strikes
+  focus_otm: true                      # Focus on OTM for delta drifting benefit
+  
+  # Risk Management
+  stop_loss_pct: 0.15                  # 15% stop loss
+  take_profit_pct: 0.30                # 30% take profit (for short covering rallies)
+  max_positions: 1                     # Single position focus
+  max_daily_trades: 10                 # Conservative daily limit
+  max_portfolio_risk: 0.02             # 2% max portfolio risk
+  position_size_pct: 0.1               # 10% position sizes
+  
+  # Market Environment Filters
+  max_vix_level: 25                    # Only trade in low VIX environments
+  check_vix: true                      # Enable VIX filtering
+  
+  # Timing
+  trading_start_time: "09:15:00"       # Market open time (IST)
+  trading_end_time: "15:30:00"         # Market close time (IST)
+  data_refresh_interval: 180           # 3-minute OI refresh cycle
+
+# API Configuration
+api:
+  # Kite Connect credentials (override with environment variables)
+  api_key: ""                          # Set via SCLU_API_KEY
+  access_token: ""                     # Set via SCLU_ACCESS_TOKEN
+  request_token: ""                    # Set via SCLU_REQUEST_TOKEN
+  
+  # Rate Limiting
+  requests_per_second: 10              # API requests per second limit
+  requests_per_minute: 300             # API requests per minute limit
+  
+  # Retry Configuration
+  max_retries: 3                       # Maximum retry attempts
+  retry_delay: 1.0                     # Delay between retries (seconds)
+
+# Data Configuration
+data:
+  # Directories
+  data_directory: "data"               # Base data directory
+  historical_data_dir: "data/historical"  # Historical data directory
+  live_data_dir: "data/live"           # Live data directory
+  
+  # File Formats
+  datetime_format: "%Y-%m-%d %H:%M:%S+05:30"  # DateTime format for CSV files
+  csv_delimiter: ","                   # CSV delimiter
+  
+  # Data Processing
+  default_timeframe: "3T"              # Default timeframe (3 minutes)
+  max_lookback_days: 30                # Maximum days of historical data
+  
+  # Focus Instruments (Index Options for Short Covering)
+  nifty_instruments:
+    - 256265                           # NIFTY (example token)
+  banknifty_instruments:
+    - 260105                           # BANKNIFTY (example token)  
+  finnifty_instruments:
+    - 257801                           # FINNIFTY (example token)
+
+# Logging Configuration
+logging:
+  level: "INFO"                        # Log level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file_path: "logs/sclu.log"           # Log file path
+  max_file_size: 10485760              # Max log file size (10MB)
+  backup_count: 5                      # Number of backup log files
+  console_output: true                 # Enable console logging
+
+# Environment Configuration
+environment: "development"             # Environment (development, staging, production)
+debug: true                           # Enable debug mode
+
+# Backtesting Configuration
+backtest:
+  initial_cash: 100000.0               # Starting cash for backtests
+  commission: 0.001                    # Commission rate (0.1%)
+  slippage: 0.0001                     # Slippage factor
+  
+  # Strategy-specific backtest settings
+  test_scenarios:
+    - name: "short_covering_rally"
+      description: "Test on days with known short covering events"
+    - name: "low_vix_periods" 
+      description: "Test during low VIX environments"
+    - name: "expiry_week"
+      description: "Test on weekly expiry patterns"
+
+# Live Trading Configuration
+live_trading:
+  enable_live_trading: false           # SAFETY: Disabled by default
+  dry_run_mode: true                   # SAFETY: Always start in dry run
+  auto_square_off: true                # Auto square off positions at market close
+  emergency_stop_loss: 0.20            # Emergency stop loss (20%)
+  
+  # Circuit breakers for short covering strategy
+  max_daily_loss: 5000.0               # Maximum daily loss limit
+  max_consecutive_losses: 3            # Max consecutive losing trades
+  
+  # Strategy-specific safety features
+  vix_circuit_breaker: 30              # Stop trading if VIX exceeds this
+  min_option_price: 1.0                # Minimum option price to trade
+  max_option_price: 100.0              # Maximum option price to trade
+  
+  # Monitoring
+  enable_alerts: true                  # Enable trading alerts
+  alert_on_errors: true                # Alert on system errors
+  heartbeat_interval: 300              # Heartbeat every 5 minutes
+
+# Strategy Research and Development
+research:
+  # Parameter optimization ranges
+  oi_ma_period_range: [30, 50, 70]
+  entry_threshold_range: [0.003, 0.005, 0.007]  # 0.3% to 0.7%
+  exit_threshold_range: [0.0005, 0.001, 0.0015]  # 0.05% to 0.15%
+  
+  # A/B testing configurations
+  enable_ab_testing: false
+  test_variants:
+    - name: "conservative"
+      entry_threshold_pct: 0.007
+      exit_doi_threshold_pct: 0.0005
+    - name: "aggressive" 
+      entry_threshold_pct: 0.003
+      exit_doi_threshold_pct: 0.0015
+
+# Performance Monitoring
+monitoring:
+  track_latency: true                  # Track API latency
+  track_slippage: true                 # Track execution slippage
+  save_performance_metrics: true       # Save detailed metrics
+  metrics_file: "logs/performance_metrics.json"
+  
+  # Strategy-specific metrics
+  track_short_covering_accuracy: true  # Track signal accuracy
+  track_vix_correlation: true          # Track VIX correlation
+  track_dte_performance: true          # Track performance by DTE

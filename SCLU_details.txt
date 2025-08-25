@@ -1,0 +1,125 @@
+Task3 Final- Attempt 1
+1
+Task3- Final- Attempt 1
+One of my most effective options strategy is based on naked option buying 
+during short covering and long unwind rallies.
+It is best suited for a market with low VIX(as most option buying strategies are) 
+and with nearer term options, within 3/4 days from expiry, where effects of 
+theta are smaller and large movements in the market lead to a significant 
+gamma effect on the option price.
+The premise of this strategy is that, colloquially, option sellers always win in the 
+market. 
+When a short cover or a long unwind occurs in the market, it is because sellersʼ 
+stop-losses are being hit, and they are forced to exit their positions. The piling 
+up of stop loss hits leads to a much larger swing in the prices of options, from 
+observation, I have seen the delta of options cross 1 at some rare 
+instances(index options on expiry day especially).
+We can measure the amount of option sellers in the market using open interest. 
+A rate of change of open interest with respect to time gives us the rate at which 
+sellers are closing/opening their positions, and a second derivative in time 
+gives us the rate of rate of change of number of sellers in the market.
+I have used the combination of the first derivative and the second derivative of 
+open interest to create buy and sell signals for the algorithm, as the rate of 
+change of OI decreases, we buy, and from charts we notice that the price 
+increases, when the rate of change of oi settles, and a significant enough 
+chunk of sellers have exited their positions, we will exit. as shown in the 
+example below-
+The chart below is for nifty 12th september 25000 ce on 12th september(0 
+ETD
+
+Task3 Final- Attempt 1
+2
+
+Task3 Final- Attempt 1
+3
+this was my backtest across the same chart as above- note how the algorithm 
+found multiple points of entry and exit, during these instances,
+there was a significant first and second derivative when the trade entered, but 
+the movement did not lead to a short covering rally, from experience, i have 
+seen these movements and it is common on expiry day, but we donʼt know 
+which will be the harshest rally.
+from these smaller moves, there was enough of a market movement(not 
+desired amount, but enough) to create profitable trades 4/7 times.
+But the primary trade we are looking at is the final trade, when the short 
+covering occurred in 25000 sep 12 nifty call, the option price shot up, along 
+with a sharp decrease in open interest, i measured the first and second 
+derivative of open interest, and from it I created buy and sell signals.
+These buy signals are namely- 
+Buy- if first derivative is negative, and second derivative is less than negative 
+of 0.5% 50 period(3 minutes) open interest moving average.
+Sell- if first derivative is much less negative(-1 multiplied by  0.1% of 50 day 
+moving average of open interest) or if second derivative is more than negative 
+of 0.5% of 50 day moving average of open interest)
+
+Task3 Final- Attempt 1
+4
+Note:- the parameters of a reference OI50 period sma as of now), the 
+multipliers on it are subejct to more backtesting and understnading what works 
+for different underlyings.
+These values work for nifty options nearer to expiry(2/1/0 DTE.
+What I am trying to do, is understand the shape of the open interest curve, and 
+decide when the when the rally is beginning to enter, and rally has cooled off to 
+exit. 
+At the end of rallies, normally there is a gradual closing of positions, since it is 
+expiry day and sellers will be forced out of their positions either way, they might 
+as well book early and guarantee their profits. My first derivative exit condition 
+is derived from this
+This regulates the strategy as an inbuilt target and SL in the form of an exit 
+criterion.
+The next complication to this strategy is to try and identify which strikes are 
+best for short covering, I have done this discretionarily in the past, but it should 
+be possible to do it algorithmically.
+On the 12th of September the entire call side option chain witnessed short 
+covering- and this can be seen across many strikes, so for the next part of the 
+strategy, we must effectively choose which strikes and expiry we must look for 
+these opportunities.
+For strike selection, we would keep our eye on ATM and OTM options,
+In case of short covering, the move will be on the call side and In case of long 
+unwind, the move will be on the put side.
+Depending on the size of the move, ATM  1 or 2 or 3 strikes could be 
+affected, the larger the move the more strikes it affects, and the greatest effect 
+is felt at the outer most strike, due to the delta drifting of the OTM option
+For the 12th september, we can analyse the difference between ITM ATM and 
+OTM options and this strategy.
+our strikes are- 24800  25200 25400 , and their respective charts are- 
+24800 
+
+Task3 Final- Attempt 1
+5
+25200 
+
+Task3 Final- Attempt 1
+6
+25400
+
+Task3 Final- Attempt 1
+7
+As I discussed- the efficacy of the strategy is larger on OTM options for both 
+call and put, as we benefit from delta drifting from these large rallies.
+There is a sense of diminishing returns the further OTM we go, so ATM  1/2/3 
+strikes works best.
+As a part of strike selection, we have to decide which strike works best- in 
+general for all options, the fundamentals of the strategy do apply, but nearer to 
+expiry the short cover and long unwind rallies tend to be more pronounced. 
+On expiry day, from experience, we see that more often price movements come 
+before open interest movement, so we are better suited to using this strategy 
+not on 0 DTE(days to expiry) but 1 or 2 days to expiry. On these days, price is 
+more reactive to open interest and so the strategy works better.
+To backtest this strategy i have used a python library called backtrader and i 
+have taken data from kiteconnectapi for specific expired options.
+The python script and the datasets used for testing are attached in the github- 
+my dataset is limited since i cannot find expired options data very easily, but 
+provided with more options data of short cover/long unwind rallies we can see 
+that this strategy is highly effective.
+To calculate rate of changes of open interest I have used the formulae-
+
+Task3 Final- Attempt 1
+8
+In my current example i have shown this strategy working with index options on 
+expiry day, This strategy is also effective on stock options in the middle of 
+month of its expiry, provided we tweak the parameters because the underlying 
+has changed. Short covering and long unwind rallies are not as aggressive in 
+these cases, and we must adjust to account for that in the entry and exit 
+conditions, but if we apply the same principles, this strategy could be effective 
+too.
+

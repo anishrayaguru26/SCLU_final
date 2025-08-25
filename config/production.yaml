@@ -1,0 +1,84 @@
+# SCLU Trading System - Production Configuration
+# Configuration for production environment
+
+# Trading Strategy Parameters
+trading:
+  # Core strategy parameters (more conservative for production)
+  sensitivity: 0.008                   # Slightly reduced sensitivity for production
+  feeling: 3500000                     # Higher feeling parameter for production
+  oi_ma_period: 50                     # Longer moving average for stability
+  
+  # Risk Management (more conservative)
+  stop_loss_pct: 0.03                  # Tighter stop loss (3%)
+  take_profit_pct: 0.08                # Moderate take profit (8%)
+  max_positions: 1                     # Single position only
+  max_daily_trades: 20                 # Reduced daily trade limit
+  max_portfolio_risk: 0.015            # Lower portfolio risk (1.5%)
+  position_size_pct: 0.05              # Smaller position sizes (5%)
+  
+  # Timing
+  trading_start_time: "09:20:00"       # Start 5 minutes after market open
+  trading_end_time: "15:25:00"         # Stop 5 minutes before market close
+  data_refresh_interval: 180           # 3-minute refresh cycle
+
+# API Configuration
+api:
+  # Production API settings
+  requests_per_second: 8               # Conservative rate limit
+  requests_per_minute: 250             # Conservative rate limit
+  
+  # Enhanced retry configuration
+  max_retries: 5                       # More retries for production
+  retry_delay: 2.0                     # Longer delay between retries
+
+# Data Configuration
+data:
+  # Production data settings
+  max_lookback_days: 60                # More historical data for production
+  
+  # Production instruments (verified tokens)
+  default_instruments:
+    - 10716162                         # FinNifty 24000 CE (verify before use)
+    - 10684418                         # FinNifty 23800 PE (verify before use)
+
+# Logging Configuration (Enhanced for production)
+logging:
+  level: "INFO"                        # INFO level for production
+  format: "%(asctime)s - %(name)s - %(levelname)s - [%(funcName)s:%(lineno)d] - %(message)s"
+  file_path: "logs/sclu_production.log"
+  max_file_size: 52428800              # Larger log files (50MB)
+  backup_count: 10                     # More backup files
+  console_output: false                # Disable console output in production
+
+# Environment Configuration
+environment: "production"              # Production environment
+debug: false                          # Disable debug mode
+
+# Production Safety Configuration
+live_trading:
+  enable_live_trading: false           # SAFETY: Disabled by default
+  dry_run_mode: true                   # SAFETY: Always start in dry run
+  auto_square_off: true                # Auto close positions at market close
+  emergency_stop_loss: 0.15            # Emergency stop (15%)
+  
+  # Circuit breakers
+  max_daily_loss: 5000.0               # Maximum daily loss limit
+  max_consecutive_losses: 3            # Max consecutive losing trades
+  
+  # Monitoring
+  enable_alerts: true                  # Enable trading alerts
+  alert_on_errors: true                # Alert on system errors
+  heartbeat_interval: 300              # Heartbeat every 5 minutes
+
+# Performance Monitoring
+monitoring:
+  track_latency: true                  # Track API latency
+  track_slippage: true                 # Track execution slippage
+  save_performance_metrics: true       # Save detailed metrics
+  metrics_file: "logs/performance_metrics.json"
+
+# Backup and Recovery
+backup:
+  enable_daily_backup: true           # Enable daily data backup
+  backup_directory: "backups"         # Backup directory
+  retain_backups_days: 30              # Keep backups for 30 days

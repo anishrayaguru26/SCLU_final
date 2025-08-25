@@ -1,0 +1,51 @@
+# SCLU Trading System - Development Dependencies
+
+# Include production requirements
+-r requirements.txt
+
+# Testing framework
+pytest>=7.0.0
+pytest-cov>=4.0.0
+pytest-mock>=3.7.0
+pytest-asyncio>=0.20.0
+pytest-xdist>=2.5.0
+
+# Code quality and formatting
+black>=22.0.0
+flake8>=4.0.0
+mypy>=0.991
+isort>=5.10.0
+bandit>=1.7.0
+
+# Pre-commit hooks
+pre-commit>=2.17.0
+
+# Documentation
+sphinx>=4.5.0
+sphinx-rtd-theme>=1.0.0
+sphinx-autodoc-typehints>=1.17.0
+
+# Development utilities
+ipython>=8.0.0
+jupyter>=1.0.0
+jupyterlab>=3.3.0
+
+# Profiling and debugging
+memory-profiler>=0.60.0
+line-profiler>=3.5.0
+py-spy>=0.3.0
+
+# Linting extensions
+flake8-docstrings>=1.6.0
+flake8-import-order>=0.18.0
+flake8-bugbear>=22.0.0
+
+# Type checking extensions
+types-requests>=2.27.0
+types-PyYAML>=6.0.0
+types-python-dateutil>=2.8.0
+
+# Build and packaging
+build>=0.7.0
+twine>=4.0.0
+wheel>=0.37.0
