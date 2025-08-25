@@ -1,12 +1,12 @@
 # SCLU - Short Cover Long Unwind
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 **SCLU** is a specialized algorithmic trading system for **naked option buying during short covering and long unwinding rallies** in the Indian stock market (NSE). The strategy capitalizes on forced exits of option sellers when their stop losses are hit, creating explosive price movements in options.
 
-## 🎯 Features
+## Features
 
 ### Core Trading Strategy
 - **Short Covering Detection**: Identifies forced seller exits during stop loss cascades
@@ -26,7 +26,7 @@
 - **Automated Execution**: Hands-free trading with configurable safety limits
 - **Monitoring & Logging**: Comprehensive logging and performance tracking
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -88,7 +88,7 @@ python scripts/live_trading.py --dry-run --config config/local.yaml
 python scripts/live_trading.py --config config/production.yaml
 ```
 
-## 📊 Strategy Overview
+## Strategy Overview
 
 The SCLU strategy targets **short covering and long unwinding rallies** where option sellers are forced to exit:
 
@@ -127,7 +127,7 @@ OR
 - **Daily Limits**: Maximum number of trades per day
 - **Emergency Stop**: Circuit breaker for large losses
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 SCLU/
@@ -154,7 +154,7 @@ SCLU/
 - **Configuration System**: Flexible configuration management
 - **Monitoring System**: Logging, metrics, and alerting
 
-## 📈 Performance & Backtesting
+## Performance & Backtesting
 
 ### Sample Performance Metrics
 
@@ -182,7 +182,7 @@ python scripts/optimize_strategy.py \
     --output results/optimization.csv
 ```
 
-## 🛠️ Configuration
+## Configuration
 
 ### Trading Parameters
 
@@ -207,7 +207,7 @@ SCLU_LOG_LEVEL=INFO
 SCLU_DRY_RUN_MODE=true
 ```
 
-## 🧪 Testing
+## Testing
 
 ```bash
 # Run unit tests
@@ -220,7 +220,7 @@ python -m pytest tests/integration/
 python -m pytest tests/ --cov=src/sclu --cov-report=html
 ```
 
-## 📝 Contributing
+## Contributing
 
 We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
@@ -239,27 +239,13 @@ flake8 src/ tests/
 mypy src/
 ```
 
-## ⚠️ Risk Disclaimer
-
-**IMPORTANT**: This software is for educational and research purposes only. 
-
-- **No Financial Advice**: This is not financial advice. Trading involves substantial risk.
-- **Use at Your Own Risk**: The authors are not responsible for any financial losses.
-- **Paper Trading First**: Always test strategies thoroughly before live trading.
-- **Risk Management**: Never risk more than you can afford to lose.
-- **Regulatory Compliance**: Ensure compliance with local trading regulations.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🤝 Support & Community
+## Support & Community
 
 - **Documentation**: [Full Documentation](docs/)
 - **Issues**: [GitHub Issues](https://github.com/yourusername/SCLU/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/yourusername/SCLU/discussions)
 
-## 🏆 Acknowledgments
+## Acknowledgments
 
 - Built with [Backtrader](https://www.backtrader.com/) for backtesting
 - Uses [Zerodha Kite Connect](https://kite.trade/) for live trading
@@ -267,6 +253,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Made with ❤️ for the trading community**
+**Made for the trading community**
 
 *Remember: Past performance does not guarantee future results. Always do your own research and trade responsibly.*

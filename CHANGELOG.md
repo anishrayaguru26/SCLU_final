@@ -7,11 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.0] - 2024-12-28
 
-### 🎉 Initial Production Release
+### Initial Production Release
 
 This represents a complete refactoring and restructuring of the SCLU algorithmic trading system to make it production-ready and suitable for public distribution.
 
-### ✨ Added
+### Added
 
 #### Core Trading System
 - **SCLU Strategy**: Production-ready implementation of the Open Interest-based trading strategy
@@ -63,7 +63,7 @@ This represents a complete refactoring and restructuring of the SCLU algorithmic
 - **Live Trading Script**: Production-ready live trading with safety features
 - **Example Configurations**: Sample configurations for different use cases
 
-### 🏗️ Project Structure
+### Project Structure
 
 #### New Directory Layout
 ```
@@ -89,7 +89,7 @@ SCLU/
 - **requirements-dev.txt**: Development dependencies
 - **pytest.ini**: Test configuration
 
-### 🔧 Technical Improvements
+### Technical Improvements
 
 #### Code Quality
 - **Type Hints**: Complete type annotation coverage
@@ -107,7 +107,7 @@ SCLU/
 - **Input Validation**: Proper validation of all user inputs
 - **API Security**: Secure API communication with proper authentication
 
-### 📦 Dependencies
+### Dependencies
 
 #### Core Dependencies
 - `backtrader>=1.9.76.123` - Backtesting framework
@@ -122,7 +122,7 @@ SCLU/
 - `flake8>=4.0.0` - Linting
 - `mypy>=0.991` - Type checking
 
-### 🚨 Breaking Changes
+### Breaking Changes
 
 This is a complete rewrite of the original SCLU system. The original code structure has been completely changed:
 
@@ -137,7 +137,7 @@ This is a complete rewrite of the original SCLU system. The original code struct
 - Migration guide provided in `legacy/README.md`
 - No backward compatibility with original code structure
 
-### 📋 Requirements
+### Requirements
 
 #### System Requirements
 - Python 3.8 or higher
@@ -150,20 +150,20 @@ This is a complete rewrite of the original SCLU system. The original code struct
 - Kite Connect API subscription
 - Valid API credentials
 
-### 🔍 Known Issues
+### Known Issues
 
 - Historical data requires manual download from broker
 - API rate limits may affect high-frequency operations
 - Real-time data depends on market hours and API availability
 
-### 📚 Documentation
+### Documentation
 
 - **README.md**: Complete setup and usage guide
 - **CONTRIBUTING.md**: Contribution guidelines
 - **API Documentation**: In-code docstring documentation
 - **Configuration Guide**: Detailed parameter explanations
 
-### 🙏 Acknowledgments
+### Acknowledgments
 
 - Built with [Backtrader](https://www.backtrader.com/) backtesting framework
 - Uses [Zerodha Kite Connect](https://kite.trade/) for live trading

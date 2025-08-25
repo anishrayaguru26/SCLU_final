@@ -2,7 +2,7 @@
 
 Thank you for your interest in contributing to SCLU! This document provides guidelines and information for contributors.
 
-## 🎯 How to Contribute
+## How to Contribute
 
 We welcome contributions in many forms:
 
@@ -13,7 +13,7 @@ We welcome contributions in many forms:
 - **Testing**: Add test cases, improve test coverage
 - **Performance**: Optimize algorithms, improve efficiency
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Fork and Clone
 
@@ -54,7 +54,7 @@ git checkout -b feature/your-feature-name
 git checkout -b fix/issue-number-description
 ```
 
-## 📝 Development Guidelines
+## Development Guidelines
 
 ### Code Style
 
@@ -141,7 +141,7 @@ class ExampleClass:
             raise RuntimeError(f"Failed to process data: {e}") from e
 ```
 
-## 🧪 Testing
+## Testing
 
 ### Running Tests
 
@@ -207,7 +207,7 @@ class TestSCLUStrategy:
         }
 ```
 
-## 📚 Documentation
+## Documentation
 
 ### Docstring Format
 
@@ -246,7 +246,7 @@ def example_function(param1: str, param2: int) -> bool:
 - Update README.md for user-facing changes
 - Add entries to CHANGELOG.md for notable changes
 
-## 🐛 Reporting Issues
+## Reporting Issues
 
 ### Before Reporting
 
@@ -281,7 +281,7 @@ What actually happened.
 Any other context, logs, or screenshots.
 ```
 
-## 🎯 Pull Request Process
+## Pull Request Process
 
 ### Before Submitting
 
@@ -325,7 +325,7 @@ Brief description of changes made.
 3. **Discussion** of design decisions if needed
 4. **Approval** and merge by maintainer
 
-## 🔒 Security
+## Security
 
 ### Reporting Security Issues
 
@@ -343,7 +343,7 @@ Instead:
 - Validate all user inputs
 - Follow secure coding practices
 
-## 📋 Development Workflow
+## Development Workflow
 
 ### Typical Workflow
 
@@ -362,7 +362,7 @@ Instead:
 4. **Tag Release**: Create git tag
 5. **Deploy**: Publish to PyPI (maintainers only)
 
-## 🏷️ Labels and Milestones
+## Labels and Milestones
 
 ### Issue Labels
 
@@ -381,7 +381,7 @@ Instead:
 - `needs-changes`: PR needs changes before merge
 - `approved`: PR is approved and ready to merge
 
-## 🤝 Community Guidelines
+## Community Guidelines
 
 ### Code of Conduct
 
@@ -397,7 +397,7 @@ Instead:
 - **Pull Requests**: For code review and collaboration
 - **Discord/Slack**: For real-time community chat (if available)
 
-## 📞 Getting Help
+## Getting Help
 
 Need help contributing? Here's where to get support:
 
@@ -406,7 +406,7 @@ Need help contributing? Here's where to get support:
 3. **Discussions**: Ask questions in GitHub Discussions
 4. **Community**: Join our community chat (if available)
 
-## 🙏 Recognition
+## Recognition
 
 Contributors will be recognized in:
 
@@ -415,4 +415,4 @@ Contributors will be recognized in:
 - **GitHub**: Contributor statistics
 - **Special recognition**: For significant contributions
 
-Thank you for contributing to SCLU! 🚀
+Thank you for contributing to SCLU!
