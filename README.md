@@ -88,6 +88,20 @@ python scripts/live_trading.py --dry-run --config config/local.yaml
 python scripts/live_trading.py --config config/production.yaml
 ```
 
+## Strategy Details and Examples
+
+For comprehensive strategy documentation with **visual examples, charts, and detailed case studies**, please refer to:
+
+**[SCLU_details.pdf](SCLU_details.pdf)** - Complete strategy documentation including:
+- Real market examples with option price movements
+- Visual charts showing OI derivative patterns
+- Detailed September 12th Nifty case study
+- Strike selection examples and effectiveness analysis
+- Mathematical formula derivations with context
+- Performance analysis across different market conditions
+
+The PDF contains the original research documentation with practical examples that complement the technical implementation in this repository.
+
 ## Strategy Overview
 
 The SCLU strategy targets **short covering and long unwinding rallies** where option sellers are forced to exit:
